@@ -1,1 +1,19 @@
-# Metagenomics-SummerProject
+## Metagenomics-SummerProject ##
+
+# Title: Metagenomics through time, in a crop wild relative of tomato
+# BACKGROUND
+Herbarium specimens preserve dried tissue that offers insight into historical biodiversity, including genomic and microbial trends (1). Improved methods in DNA extraction and sequencing of degraded tissue make these specimens available for metagenomic research (2). Microbial DNA recovered from herbarium material reflects both natural plant-microbe associations and postmortem colonization by storage-related fungi and bacteria (e.g. Alternaria alternata), as revealed by Bieker and colleagues (1) in comparison of microbial profiles with modern samples. Other studies using herbarium DNA have highlighted its utility in tracking changes in community composition and environmental responses (3). This underscores the need for bioinformatic workflows to distinguish ecologically relevant microbes from common artifacts, which could help accelerate the discovery of microbial communities of wild populations of plants in remote areas. For example, one study has revealed that the microbial diversity of natural populations in wild tomato species’ phyllosphere has been linked to host genotype, environmental conditions, and plant health status (4).
+PROJECT OBJECTIVE STATEMENT
+The objective of this project is to characterize and compare the microbial communities present in historical and contemporary herbarium specimens of a crop wild relative of tomato using whole-genome shotgun sequencing data. A pipeline will be implemented and tested for metagenomic profiling across a time series of samples collected between the 1950s and 2022.
+## HYPOTHESIS
+Microbial communities in historical herbarium specimens will differ from those in modern samples due to postmortem colonization and long-term storage conditions. Applying a contaminant-filtering pipeline will reduce technical noise and reveal biologically relevant taxa that reflect genuine temporal shifts in plant-associated microbiota.
+## PROPOSED METHODS
+In this project, a subset of whole-genome shotgun sequencing data from 40 historical and 12 modern Solanum specimens will be analyzed. Reads will first undergo quality control and adapter trimming using BBduk, followed by removal of host (Solanum chilense) DNA by mapping against the S. chilense reference genome using BBmap. Remaining reads will then undergo contaminant removal using BBmap with a custom FASTA reference containing known lab and herbarium-associated microbes. The contaminant-filtering pipeline will be adapted from protocols previously developed by Peter Poczai and colleagues. Additional decontamination scripts (e.g., FastQ-Screen or Bowtie2-based filters) may be tested as a secondary approach. The resulting clean reads will be classified using Kraken2 and visualized in MEGAN. Microbial community differences across time will be assessed using R packages such as phyloseq, vegan, and DESeq2.
+## CONCLUSION & SIGNIFICANCE
+In conclusion, this project will try to broaden the understanding of how microbial communities associated with crop wild relatives may have changed in response to environmental shifts, anthropogenic pressures, or storage artifacts. Ultimately, it contributes to both conservation genomics and the development of bioinformatic strategies for handling degraded plant metagenomes.
+
+## References
+1. Bieker VC, Sánchez Barreiro F, Rasmussen JA, Brunier M, Wales N, Martin MD. Metagenomic analysis of historical herbarium specimens reveals a postmortem microbial community. Mol Ecol Resour. 2020;20(5):1206–19.
+2. Waters C, Hurt C, Krosnick S. Looking to the past to inform the future: What eDNA from herbarium specimens can tell us about plant–animal interactions. Appl Plant Sci. 2025;13(2):e11633.
+3. Bakker FT, Hemerik L. Herbarium DNA degradation – Falling to pieces non-randomly. BAUHINIA – Z Basl Bot Ges. 2023 Dec 31;29:63–74.
+4. Runge P, Ventura F, Kemen E, Stam R. Distinct Phyllosphere Microbiome of Wild Tomato Species in Central Peru upon Dysbiosis. Microb Ecol. 2023 Jan 1;85(1):168–83.
